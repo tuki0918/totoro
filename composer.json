@@ -1,5 +1,12 @@
 {
+    "name": "tuki0918/totoro",
+    "license": "MIT",
     "require": {
         "abraham/twitteroauth": "^0.6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Totoro\\": "src/"
+        }
     }
 }
