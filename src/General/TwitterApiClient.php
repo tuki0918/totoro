@@ -6,6 +6,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 use Totoro\Api\Favorites\DestroyApiResponse;
 use Totoro\Api\Favorites\ListApiResponse;
 use Totoro\Api\Statuses\UpdateApiResponse;
+use Totoro\Api\Statuses\UserTimelineApiResponse;
 
 /**
  * TwitterApiClient
@@ -24,6 +25,14 @@ class TwitterApiClient implements TwitterApiClientInterface
         $this->twitterOAuth = $twitterOAuth;
     }
 
+    public function getStatusesUserTimeline(array $parameters = []): UserTimelineApiResponse
+    {
+        return new UserTimelineApiResponse($this->get(
+            TwitterApiEndpoint::statuses_user_timeline(),
+            $parameters
+        ));
+    }
+    
     public function postStatusesUpdate(array $parameters = []): UpdateApiResponse
     {
         return new UpdateApiResponse($this->post(

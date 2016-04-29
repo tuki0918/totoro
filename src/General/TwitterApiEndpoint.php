@@ -43,6 +43,16 @@ final class TwitterApiEndpoint
     }
 
     /**
+     * statuses/user_timeline
+     * @see https://dev.twitter.com/rest/reference/get/statuses/user_timeline
+     * @return TwitterApiEndpoint
+     */
+    public static function statuses_user_timeline()
+    {
+        return self::make('statuses/user_timeline');
+    }
+
+    /**
      * statuses/update
      * @see https://dev.twitter.com/rest/reference/post/statuses/update
      * @return TwitterApiEndpoint
