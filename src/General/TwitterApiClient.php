@@ -5,6 +5,7 @@ namespace Totoro\General;
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Totoro\Api\Favorites\DestroyApiResponse;
 use Totoro\Api\Favorites\ListApiResponse;
+use Totoro\Api\Statuses\UpdateApiResponse;
 
 /**
  * TwitterApiClient
@@ -21,6 +22,14 @@ class TwitterApiClient implements TwitterApiClientInterface
     public function __construct(TwitterOAuth $twitterOAuth)
     {
         $this->twitterOAuth = $twitterOAuth;
+    }
+
+    public function postStatusesUpdate(array $parameters = []): UpdateApiResponse
+    {
+        return new UpdateApiResponse($this->post(
+            TwitterApiEndpoint::statuses_update(),
+            $parameters
+        ));
     }
 
     public function getFavoritesList(array $parameters = []): ListApiResponse

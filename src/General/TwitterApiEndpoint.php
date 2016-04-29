@@ -43,6 +43,16 @@ final class TwitterApiEndpoint
     }
 
     /**
+     * statuses/update
+     * @see https://dev.twitter.com/rest/reference/post/statuses/update
+     * @return TwitterApiEndpoint
+     */
+    public static function statuses_update()
+    {
+        return self::make('statuses/update');
+    }
+
+    /**
      * favorites/list
      * @see https://dev.twitter.com/rest/reference/get/favorites/list
      * @return TwitterApiEndpoint

@@ -1,14 +1,14 @@
 <?php
 
-namespace Totoro\Api\Favorites;
+namespace Totoro\Api\Statuses;
 
 use Totoro\General\Entities\Tweet as Entity;
 use Totoro\General\TwitterApiResponse as ApiResponse;
 
 /**
- * DestroyApiResponse
+ * UpdateApiResponse
  */
-class DestroyApiResponse extends ApiResponse
+class UpdateApiResponse extends ApiResponse
 {
     /**
      * @return Entity

@@ -2,6 +2,8 @@
 
 namespace Totoro\General;
 
+use Totoro\General\Entities\Tweet as Entity;
+
 /**
  * TwitterApiResponse
  */
@@ -34,5 +36,18 @@ class TwitterApiResponse
     public function getResult()
     {
         return $this->data;
+    }
+
+    /**
+     * @param object $tweet
+     * @return Entity
+     */
+    protected function transform($tweet): Entity
+    {
+        // TODO readable property
+        return new Entity(
+            $tweet->id,
+            $tweet->text
+        );
     }
 }
