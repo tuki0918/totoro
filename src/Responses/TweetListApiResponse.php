@@ -12,10 +12,8 @@ class TweetListApiResponse extends ApiResponse
     /**
      * @return Entity[]
      */
-    public function response(): array
+    public function entities(): array
     {
-        return array_map(function($tweet) {
-            return $this->transform($tweet);
-        }, $this->getResult());
+        return $this->transform(...$this->data());
     }
 }

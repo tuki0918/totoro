@@ -10,10 +10,11 @@ use Totoro\General\Entities\Tweet as Entity;
 class TweetApiResponse extends ApiResponse
 {
     /**
-     * @return Entity
+     * @return Entity|null
      */
-    public function response(): Entity
+    public function entity()
     {
-        return $this->transform($this->getResult());
+        $data = $this->transform($this->data());
+        return isset($data[0]) ? $data[0] : null;
     }
 }
