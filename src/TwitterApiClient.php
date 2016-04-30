@@ -3,6 +3,7 @@
 namespace Totoro\General;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use Totoro\General\Exceptions\TwitterApiException;
 use Totoro\General\Responses\TweetApiResponse;
 use Totoro\General\Responses\TweetListApiResponse;
 use Totoro\General\Utils\TwitterApiEndpoint as ApiEndpoint;
@@ -58,23 +59,49 @@ class TwitterApiClient implements TwitterApiClientInterface
 
     /**
      * Request GET method.
+     *
      * @param ApiEndpoint $apiEndpoint
      * @param array $parameters
      * @return array|object
+     * @throws TwitterApiException
      */
     private function get(ApiEndpoint $apiEndpoint, array $parameters = [])
     {
-        return $this->twitterOAuth->get($apiEndpoint->value(), $parameters);
+        $data = $this->twitterOAuth->get($apiEndpoint->value(), $parameters);
+
+        $this->httpCodeIsValid();
+
+        return $data;
     }
 
     /**
      * Request POST method.
+     *
      * @param ApiEndpoint $apiEndpoint
      * @param array $parameters
      * @return array|object
+     * @throws TwitterApiException
      */
     private function post(ApiEndpoint $apiEndpoint, array $parameters = [])
     {
-        return $this->twitterOAuth->post($apiEndpoint->value(), $parameters);
+        $data = $this->twitterOAuth->post($apiEndpoint->value(), $parameters);
+
+        $this->httpCodeIsValid();
+
+        return $data;
+
+    }
+
+    /**
+     * Valid http status code.
+     *
+     * @see https://dev.twitter.com/overview/api/response-codes
+     * @throws TwitterApiException
+     */
+    private function httpCodeIsValid()
+    {
+        if ($this->twitterOAuth->getLastHttpCode() !== 200) {
+            throw new TwitterApiException();
+        }
     }
 }
