@@ -50,7 +50,27 @@ class ApiResponse
     {
         return new Entity(
             $tweet->id,
-            $tweet->text
+            $tweet->id_str,
+            $tweet->created_at,
+            $tweet->text,
+            $tweet->entities,
+            $tweet->truncated,
+            $tweet->source,
+            $tweet->in_reply_to_status_id,
+            $tweet->in_reply_to_status_id_str,
+            $tweet->in_reply_to_user_id,
+            $tweet->in_reply_to_user_id_str,
+            $tweet->in_reply_to_screen_name,
+            $tweet->user,
+            $tweet->coordinates,
+            $tweet->place,
+            $tweet->contributors,
+            $tweet->is_quote_status,
+            $tweet->retweet_count,
+            $tweet->favorite_count,
+            $tweet->favorited,
+            $tweet->retweeted,
+            $tweet->lang
         );
     }
 }
