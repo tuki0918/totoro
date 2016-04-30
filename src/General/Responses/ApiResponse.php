@@ -1,13 +1,13 @@
 <?php
 
-namespace Totoro\General;
+namespace Totoro\General\Responses;
 
 use Totoro\General\Entities\Tweet as Entity;
 
 /**
- * TwitterApiResponse
+ * ApiResponse
  */
-class TwitterApiResponse
+class ApiResponse
 {
     /** @var array|object */
     protected $data;

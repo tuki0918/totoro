@@ -3,10 +3,8 @@
 namespace Totoro\General;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-use Totoro\Api\Favorites\DestroyApiResponse;
-use Totoro\Api\Favorites\ListApiResponse;
-use Totoro\Api\Statuses\UpdateApiResponse;
-use Totoro\Api\Statuses\UserTimelineApiResponse;
+use Totoro\General\Responses\TweetApiResponse;
+use Totoro\General\Responses\TweetListApiResponse;
 
 /**
  * TwitterApiClient
@@ -25,33 +23,33 @@ class TwitterApiClient implements TwitterApiClientInterface
         $this->twitterOAuth = $twitterOAuth;
     }
 
-    public function getStatusesUserTimeline(array $parameters = []): UserTimelineApiResponse
+    public function getStatusesUserTimeline(array $parameters = []): TweetListApiResponse
     {
-        return new UserTimelineApiResponse($this->get(
+        return new TweetListApiResponse($this->get(
             TwitterApiEndpoint::statuses_user_timeline(),
             $parameters
         ));
     }
     
-    public function postStatusesUpdate(array $parameters = []): UpdateApiResponse
+    public function postStatusesUpdate(array $parameters = []): TweetApiResponse
     {
-        return new UpdateApiResponse($this->post(
+        return new TweetApiResponse($this->post(
             TwitterApiEndpoint::statuses_update(),
             $parameters
         ));
     }
 
-    public function getFavoritesList(array $parameters = []): ListApiResponse
+    public function getFavoritesList(array $parameters = []): TweetListApiResponse
     {
-        return new ListApiResponse($this->get(
+        return new TweetListApiResponse($this->get(
             TwitterApiEndpoint::favorites_list(),
             $parameters
         ));
     }
 
-    public function destroyFavorites(array $parameters = []): DestroyApiResponse
+    public function destroyFavorites(array $parameters = []): TweetApiResponse
     {
-        return new DestroyApiResponse($this->post(
+        return new TweetApiResponse($this->post(
             TwitterApiEndpoint::favorites_destroy(),
             $parameters
         ));

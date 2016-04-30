@@ -1,14 +1,13 @@
 <?php
 
-namespace Totoro\Api\Statuses;
+namespace Totoro\General\Responses;
 
 use Totoro\General\Entities\Tweet as Entity;
-use Totoro\General\TwitterApiResponse as ApiResponse;
 
 /**
- * UpdateApiResponse
+ * TweetApiResponse
  */
-class UpdateApiResponse extends ApiResponse
+class TweetApiResponse extends ApiResponse
 {
     /**
      * @return Entity

@@ -1,14 +1,13 @@
 <?php
 
-namespace Totoro\Api\Favorites;
+namespace Totoro\General\Responses;
 
 use Totoro\General\Entities\Tweet as Entity;
-use Totoro\General\TwitterApiResponse as ApiResponse;
 
 /**
- * ListApiResponse
+ * TweetListApiResponse
  */
-class ListApiResponse extends ApiResponse
+class TweetListApiResponse extends ApiResponse
 {
     /**
      * @return Entity[]

@@ -2,10 +2,8 @@
 
 namespace Totoro\General;
 
-use Totoro\Api\Favorites\DestroyApiResponse;
-use Totoro\Api\Favorites\ListApiResponse;
-use Totoro\Api\Statuses\UpdateApiResponse;
-use Totoro\Api\Statuses\UserTimelineApiResponse;
+use Totoro\General\Responses\TweetApiResponse;
+use Totoro\General\Responses\TweetListApiResponse;
 
 /**
  * Interface TwitterApiClientInterface
@@ -15,28 +13,28 @@ interface TwitterApiClientInterface
     /**
      * @see https://dev.twitter.com/rest/reference/get/statuses/user_timeline
      * @param array $parameters
-     * @return UserTimelineApiResponse
+     * @return TweetListApiResponse
      */
-    public function getStatusesUserTimeline(array $parameters = []): UserTimelineApiResponse;
+    public function getStatusesUserTimeline(array $parameters = []): TweetListApiResponse;
 
     /**
      * @see https://dev.twitter.com/rest/reference/post/statuses/update
      * @param array $parameters
-     * @return UpdateApiResponse
+     * @return TweetApiResponse
      */
-    public function postStatusesUpdate(array $parameters = []): UpdateApiResponse;
+    public function postStatusesUpdate(array $parameters = []): TweetApiResponse;
 
     /**
      * @see https://dev.twitter.com/rest/reference/get/favorites/list
      * @param array $parameters
-     * @return ListApiResponse
+     * @return TweetListApiResponse
      */
-    public function getFavoritesList(array $parameters = []): ListApiResponse;
+    public function getFavoritesList(array $parameters = []): TweetListApiResponse;
 
     /**
      * @see https://dev.twitter.com/rest/reference/post/mutes/users/destroy
      * @param array $parameters
-     * @return DestroyApiResponse
+     * @return TweetApiResponse
      */
-    public function destroyFavorites(array $parameters = []): DestroyApiResponse;
+    public function destroyFavorites(array $parameters = []): TweetApiResponse;
 }
