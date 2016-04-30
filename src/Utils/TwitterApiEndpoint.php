@@ -47,7 +47,7 @@ final class TwitterApiEndpoint
      * @see https://dev.twitter.com/rest/reference/get/statuses/user_timeline
      * @return TwitterApiEndpoint
      */
-    public static function statuses_user_timeline(): TwitterApiEndpoint
+    public static function statusesUserTimeline(): TwitterApiEndpoint
     {
         return self::make('statuses/user_timeline');
     }
@@ -57,7 +57,7 @@ final class TwitterApiEndpoint
      * @see https://dev.twitter.com/rest/reference/post/statuses/update
      * @return TwitterApiEndpoint
      */
-    public static function statuses_update(): TwitterApiEndpoint
+    public static function statusesUpdate(): TwitterApiEndpoint
     {
         return self::make('statuses/update');
     }
@@ -67,7 +67,7 @@ final class TwitterApiEndpoint
      * @see https://dev.twitter.com/rest/reference/get/favorites/list
      * @return TwitterApiEndpoint
      */
-    public static function favorites_list(): TwitterApiEndpoint
+    public static function favoritesList(): TwitterApiEndpoint
     {
         return self::make('favorites/list');
     }
@@ -77,7 +77,7 @@ final class TwitterApiEndpoint
      * @see https://dev.twitter.com/rest/reference/post/favorites/destroy
      * @return TwitterApiEndpoint
      */
-    public static function favorites_destroy(): TwitterApiEndpoint
+    public static function favoritesDestroy(): TwitterApiEndpoint
     {
         return self::make('favorites/destroy');
     }

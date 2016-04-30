@@ -36,5 +36,5 @@ interface TwitterApiClientInterface
      * @param array $parameters
      * @return TweetApiResponse
      */
-    public function destroyFavorites(array $parameters = []): TweetApiResponse;
+    public function postFavoritesDestroy(array $parameters = []): TweetApiResponse;
 }

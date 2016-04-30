@@ -5,7 +5,7 @@ namespace Totoro\General;
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Totoro\General\Responses\TweetApiResponse;
 use Totoro\General\Responses\TweetListApiResponse;
-use Totoro\General\Utils\TwitterApiEndpoint;
+use Totoro\General\Utils\TwitterApiEndpoint as ApiEndpoint;
 
 /**
  * TwitterApiClient
@@ -27,7 +27,7 @@ class TwitterApiClient implements TwitterApiClientInterface
     public function getStatusesUserTimeline(array $parameters = []): TweetListApiResponse
     {
         return new TweetListApiResponse($this->get(
-            TwitterApiEndpoint::statuses_user_timeline(),
+            ApiEndpoint::statusesUserTimeline(),
             $parameters
         ));
     }
@@ -35,7 +35,7 @@ class TwitterApiClient implements TwitterApiClientInterface
     public function postStatusesUpdate(array $parameters = []): TweetApiResponse
     {
         return new TweetApiResponse($this->post(
-            TwitterApiEndpoint::statuses_update(),
+            ApiEndpoint::statusesUpdate(),
             $parameters
         ));
     }
@@ -43,37 +43,37 @@ class TwitterApiClient implements TwitterApiClientInterface
     public function getFavoritesList(array $parameters = []): TweetListApiResponse
     {
         return new TweetListApiResponse($this->get(
-            TwitterApiEndpoint::favorites_list(),
+            ApiEndpoint::favoritesList(),
             $parameters
         ));
     }
 
-    public function destroyFavorites(array $parameters = []): TweetApiResponse
+    public function postFavoritesDestroy(array $parameters = []): TweetApiResponse
     {
         return new TweetApiResponse($this->post(
-            TwitterApiEndpoint::favorites_destroy(),
+            ApiEndpoint::favoritesDestroy(),
             $parameters
         ));
     }
 
     /**
      * Request GET method.
-     * @param TwitterApiEndpoint $apiEndpoint
+     * @param ApiEndpoint $apiEndpoint
      * @param array $parameters
      * @return array|object
      */
-    private function get(TwitterApiEndpoint $apiEndpoint, array $parameters = [])
+    private function get(ApiEndpoint $apiEndpoint, array $parameters = [])
     {
         return $this->twitterOAuth->get($apiEndpoint->value(), $parameters);
     }
 
     /**
      * Request POST method.
-     * @param TwitterApiEndpoint $apiEndpoint
+     * @param ApiEndpoint $apiEndpoint
      * @param array $parameters
      * @return array|object
      */
-    private function post(TwitterApiEndpoint $apiEndpoint, array $parameters = [])
+    private function post(ApiEndpoint $apiEndpoint, array $parameters = [])
     {
         return $this->twitterOAuth->post($apiEndpoint->value(), $parameters);
     }
