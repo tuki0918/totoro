@@ -1,6 +1,6 @@
 <?php
 
-namespace Totoro\General;
+namespace Totoro\General\Utils;
 
 /**
  * TwitterApiEndpoint

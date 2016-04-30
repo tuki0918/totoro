@@ -5,6 +5,7 @@ namespace Totoro\General;
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Totoro\General\Responses\TweetApiResponse;
 use Totoro\General\Responses\TweetListApiResponse;
+use Totoro\General\Utils\TwitterApiEndpoint;
 
 /**
  * TwitterApiClient
