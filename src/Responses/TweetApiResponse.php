@@ -2,7 +2,7 @@
 
 namespace Totoro\General\Responses;
 
-use Totoro\General\Entities\Tweet as Entity;
+use Totoro\General\Entities\Tweet;
 
 /**
  * TweetApiResponse
@@ -10,7 +10,7 @@ use Totoro\General\Entities\Tweet as Entity;
 class TweetApiResponse extends ApiResponse
 {
     /**
-     * @return Entity|null
+     * @return Tweet|null
      */
     public function entity()
     {

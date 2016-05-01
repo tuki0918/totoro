@@ -13,7 +13,7 @@ class Tweet
     private $id;
     /** @var string */
     private $idStr;
-    /** @var string */
+    /** @var \DateTime */
     private $createdAt;
     /** @var string */
     private $text;
@@ -33,7 +33,7 @@ class Tweet
     private $inReplyToUserIdStr;
     /** @var string|null */
     private $inReplyToScreenName;
-    /** @var \stdClass */ // TODO
+    /** @var User */
     private $user;
     /** @var array|null */ // TODO
     private $coordinates;
@@ -63,7 +63,7 @@ class Tweet
      * Constructor
      * @param int $id
      * @param string $id_str
-     * @param string $created_at
+     * @param \DateTime $created_at
      * @param string $text
      * @param \stdClass $entities
      * @param bool $truncated
@@ -73,7 +73,7 @@ class Tweet
      * @param int|null $in_reply_to_user_id
      * @param string|null $in_reply_to_user_id_str
      * @param string|null $in_reply_to_screen_name
-     * @param \stdClass $user
+     * @param User $user
      * @param \stdClass|null $geo
      * @param array|null $coordinates
      * @param \stdClass|null $place
@@ -88,26 +88,26 @@ class Tweet
     public function __construct(
         int $id,
         string $id_str,
-        string $created_at,
+        \DateTime $created_at,
         string $text,
         \stdClass $entities,
         bool $truncated,
         string $source,
-        int $in_reply_to_status_id = null,
-        string $in_reply_to_status_id_str = null,
-        int $in_reply_to_user_id = null,
-        string $in_reply_to_user_id_str = null,
-        string $in_reply_to_screen_name = null,
-        \stdClass $user,
-        array $coordinates = null,
-        \stdClass $place = null,
-        array $contributors = null,
+        User $user,
         bool $is_quote_status,
         int $retweet_count,
         int $favorite_count,
         bool $favorited,
         bool $retweeted,
         string $lang,
+        int $in_reply_to_status_id = null,
+        string $in_reply_to_status_id_str = null,
+        int $in_reply_to_user_id = null,
+        string $in_reply_to_user_id_str = null,
+        string $in_reply_to_screen_name = null,
+        array $coordinates = null,
+        \stdClass $place = null,
+        array $contributors = null,
         \stdClass $geo = null
     ) {
         $this->createdAt = $created_at;
@@ -152,11 +152,11 @@ class Tweet
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function createdAt(): string
+    public function createdAt(): \DateTime
     {
-        return $this->createdAt;
+        return clone $this->createdAt;
     }
 
     /**
@@ -232,9 +232,9 @@ class Tweet
     }
 
     /**
-     * @return \stdClass
+     * @return User
      */
-    public function user(): \stdClass
+    public function user(): User
     {
         return $this->user;
     }
