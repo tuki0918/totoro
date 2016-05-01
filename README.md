@@ -35,6 +35,11 @@ $tweet = $client->postStatusesUpdate(
     ['status' => 'twitter api post.']
 )->entity();
 
+// post: alias tweet
+$tweet = $client->tweet(
+    ['status' => 'twitter api post.']
+)->entity();
+
 // return: Totoro\General\Entities\Tweet
 print_r($tweet);
 
