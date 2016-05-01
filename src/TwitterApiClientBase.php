@@ -16,6 +16,15 @@ abstract class TwitterApiClientBase implements TwitterApiClientInterface
     /** @var TwitterOAuth */
     private $twitterOAuth;
 
+    /** @var string|null */
+    private $oauthCallback;
+
+    /** @var string|null */
+    private $lastOauthToken;
+
+    /** @var string|null */
+    private $lastOauthTokenSecret;
+
     /**
      * Constructor
      * @param TwitterOAuth $twitterOAuth
@@ -23,6 +32,67 @@ abstract class TwitterApiClientBase implements TwitterApiClientInterface
     public function __construct(TwitterOAuth $twitterOAuth)
     {
         $this->twitterOAuth = $twitterOAuth;
+        $this->oauthCallback = null;
+        $this->lastOauthToken = null;
+        $this->lastOauthTokenSecret = null;
+    }
+
+    /**
+     * @param string $oauth_callback
+     * @return TwitterApiClientBase
+     */
+    public function setOauthCallback(string $oauth_callback): TwitterApiClientBase
+    {
+        $this->oauthCallback = $oauth_callback;
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getOauthCallback()
+    {
+        return $this->oauthCallback;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getLastOauthToken()
+    {
+        return $this->lastOauthToken;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getLastOauthTokenSecret()
+    {
+        return $this->lastOauthTokenSecret;
+    }
+
+    /**
+     * @return array
+     * @throws \Abraham\TwitterOAuth\TwitterOAuthException
+     */
+    public function getRequestToken(): array
+    {
+        $token = $this->twitterOAuth->oauth('oauth/request_token', ['oauth_callback' => $this->getOauthCallback()]);
+
+        $this->lastOauthToken = $token['oauth_token'] ?? null;
+        $this->lastOauthTokenSecret = $token['oauth_token_secret'] ?? null;
+
+        return $token;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTwitterAuthenticationUrl(): string
+    {
+        $this->getRequestToken();
+
+        return $this->twitterOAuth->url('oauth/authorize', ['oauth_token' => $this->getLastOauthToken()]);
     }
 
     public function getStatusesUserTimeline(array $parameters = []): TweetListApiResponse
@@ -56,7 +126,7 @@ abstract class TwitterApiClientBase implements TwitterApiClientInterface
             $parameters
         ));
     }
-
+    
     /**
      * Request GET method.
      *
@@ -89,7 +159,6 @@ abstract class TwitterApiClientBase implements TwitterApiClientInterface
         $this->httpCodeIsValid();
 
         return $data;
-
     }
 
     /**
