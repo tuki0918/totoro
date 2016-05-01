@@ -21,21 +21,21 @@ $client = new TwitterApiClient(new TwitterOAuth(
 
 
 // get: user timeline
-$entities = $client->getStatusesUserTimeline([
+$tweets = $client->getStatusesUserTimeline([
     'screen_name' => 'tuki0918',
     'count' => 5
 ])->entities();
 
 // return: Totoro\General\Entities\Tweet[]
-print_r($entities);
+print_r($tweets);
 
 
 // post: tweet
-$entity = $client->postStatusesUpdate(
+$tweet = $client->postStatusesUpdate(
     ['status' => 'twitter api post.']
 )->entity();
 
 // return: Totoro\General\Entities\Tweet
-print_r($entity);
+print_r($tweet);
 
 ```
