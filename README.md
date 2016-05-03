@@ -1,3 +1,10 @@
+[![Build Status](https://travis-ci.org/tuki0918/totoro.svg?branch=master)](https://travis-ci.org/tuki0918/totoro)
+[![Latest Stable Version](https://poser.pugx.org/tuki0918/totoro/v/stable)](https://packagist.org/packages/tuki0918/totoro)
+[![Latest Unstable Version](https://poser.pugx.org/tuki0918/totoro/v/unstable)](https://packagist.org/packages/tuki0918/totoro)
+[![Coverage Status](https://coveralls.io/repos/github/tuki0918/totoro/badge.svg?branch=master)](https://coveralls.io/github/tuki0918/totoro?branch=master)
+[![Total Downloads](https://poser.pugx.org/tuki0918/totoro/downloads)](https://packagist.org/packages/tuki0918/totoro)
+[![License](https://poser.pugx.org/tuki0918/totoro/license)](https://packagist.org/packages/tuki0918/totoro)
+
 # totoro
 
 ```
